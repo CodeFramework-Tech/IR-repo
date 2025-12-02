@@ -3,7 +3,7 @@
 # term -> { doc_id: [pos1, pos2, ...] }
 
 import joblib
-from preprocess import preprocess_text
+from src.preprocess import preprocess_text
 
 def build_positional_index(docs):
     index = {}

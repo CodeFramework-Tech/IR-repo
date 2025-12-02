@@ -1,9 +1,12 @@
 # src/boolean_index.py
 # Simple boolean inverted index: term -> set(docIDs)
 # Student-style and straightforward.
+import sys
+import os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), 'src')))
 
 import joblib
-from preprocess import preprocess_text
+from src.preprocess import preprocess_text
 
 def build_boolean_index(docs):
     """

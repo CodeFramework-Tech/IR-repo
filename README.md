@@ -12,7 +12,9 @@ Hybrid information-retrieval pipeline that ingests the provided `data/news.csv`,
 ```powershell
 # 1) Clone or download the repo, then inside project root:
 python -m venv .venv311              # create venv (optional but recommended)
+ source .venv311/bin/activate
 .\.venv311\Scripts\Activate.ps1      # PowerShell; use activate.bat on cmd/activate on bash
+
 python -m pip install --upgrade pip  # once per venv
 python -m pip install -r requirements.txt
 

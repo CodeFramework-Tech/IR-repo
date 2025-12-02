@@ -1,15 +1,21 @@
-# src/build_indexes.py
-
 import pandas as pd
-from boolean_index import build_boolean_index, save_index
-from positional_index import build_positional_index, save_index as save_pos
-from tfidf_index import build_tfidf_matrix, save_tfidf
-from bm25_index import build_bm25_index, save_bm25
+import json
+from src.boolean_index import build_boolean_index, save_index
+from src.positional_index import build_positional_index, save_index as save_pos
+from src.tfidf_index import build_tfidf_matrix, save_tfidf
+from src.bm25_index import build_bm25, save_bm25
 
 # Load dataset
 df = pd.read_csv("data/news.csv")
 docs = df["Article"].astype(str).tolist()
 
+# Limit to first 50 documents for testing
+docs = docs[:100]
+
+# Save metadata to JSON (using document titles or headings as metadata)
+metadata = {"documents": df["Heading"].astype(str).tolist()}  # Adjust the column name as needed
+with open("index/metadata.json", "w") as f:
+    json.dump(metadata, f)
 
 # Boolean
 print("Building Boolean index...")
@@ -28,7 +34,7 @@ save_tfidf(vec, mat, "index/tfidf.pkl")
 
 # BM25
 print("Building BM25 index...")
-bm25, tokens = build_bm25_index(docs)
+bm25, tokens = build_bm25(docs)
 save_bm25(bm25, tokens, "index/bm25.pkl")
 
 print("All indexes built successfully!")
