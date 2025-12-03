@@ -1,4 +1,3 @@
-# test_faiss.py
 
 import faiss
 import numpy as np

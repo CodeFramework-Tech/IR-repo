@@ -15,8 +15,6 @@ def calculate_precision_recall(retrieved_docs, relevant_docs):
 
 
 retrieved_docs = [0, 1, 2, 3, 4, 5, 6, 7, 8, 10]
-
-# Replace these numbers with your actual relevant document IDs from your file.
 relevant_docs = [5,20,31]
 
 

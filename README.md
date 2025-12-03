@@ -1,10 +1,10 @@
-# 📰 IR-Repo: Hybrid Information Retrieval System
+# IR-Repo: Hybrid Information Retrieval System
 
 ## Overview
 
-Welcome to the **Hybrid Information Retrieval (IR)** system! This project explores the benefits of hybrid search, combining traditional, high-precision keyword matching with modern, high-recall semantic search to deliver highly relevant and well-ranked results.
+Here is the **Hybrid Information Retrieval (IR)** system! This project explores the benefits of hybrid search, combining traditional, high-precision keyword matching with modern, high-recall semantic search to deliver highly relevant and well-ranked results.
 
-The system leverages cutting-edge technologies like BM25, TF-IDF, **Learning-to-Rank (LTR)** models, BERT embeddings, and FAISS indexing to ensure fast and accurate search results.
+The system utilize cutting-edge technologies like BM25, TF-IDF, **Learning-to-Rank (LTR)** models, BERT embeddings, and FAISS indexing to ensure fast and accurate search results.
 
 ## Key Features
 
@@ -12,8 +12,8 @@ The system leverages cutting-edge technologies like BM25, TF-IDF, **Learning-to-
 
 - **Embedding Generation & Indexing**: The `src/embeddings.py` script generates BERT embeddings for your documents, which are then indexed using the FAISS library to allow efficient similarity-based search.
 
-- **Comprehensive Evaluation**: Automatically evaluates the system’s performance through metrics such as
-  **Precision**, **Recall**, and other advanced measures (like **MAP/NDCG**) using the script `src/evaluation.py`.
+- **Comprehensive Evaluation**: Automatically evaluates the systems performance through metrics such as
+  **Precision**, **Recall**, `src/evaluation.py`.
 
 - **Modular Design**: The project is divided into easy-to-manage components for preprocessing, indexing, querying, ranking, and evaluation.
 
@@ -24,7 +24,8 @@ The system leverages cutting-edge technologies like BM25, TF-IDF, **Learning-to-
 
 ## Setup & Installation
 
-To get started with the project, we recommend setting up a virtual environment. Here’s how to get it running:
+To get started with the project, we recommend setting up a virtual environment.
+Below are steps how git working properly
 
 ### 1. Clone the Repository:
 
@@ -44,11 +45,7 @@ python3 -m venv .venv
 source .venv/bin/activate
 ```
 
-For **Windows** users, use the following command instead:
-
-```bash
-.\.venv\Scripts\activate
-```
+locally i make the system in macOS
 
 ### 3. Install Dependencies:
 
@@ -60,11 +57,12 @@ pip install -r requirements.txt
 
 ## Usage
 
-Once everything is set up, here’s how you can use the system:
+How the use of ssystem
 
 ### 1. Build & Index Documents
 
-Before you can search, you’ll need to build the index first. This step will create all the required files for the system.
+First Search
+build the index first by this step will create all the required files for the system.
 
 ```bash
 python -m src.hybrid_search build
@@ -72,7 +70,7 @@ python -m src.hybrid_search build
 
 ### 2. Run a Search Query
 
-Now you can execute a search query. The system will load the pre-built index, perform hybrid scoring (combining BM25, TF-IDF, and BERT), and return the ranked results.
+Run a search query. The system will load the pre-built index, perform hybrid scoring (combining BM25, TF-IDF, and BERT), and return the ranked results.
 
 ```bash
 python -m src.hybrid_search "What is the role of BERT in hybrid information retrieval systems?"
@@ -96,8 +94,9 @@ To evaluate how well your system is performing, you have two options:
 
 ## Known Issues & Troubleshooting
 
-Here are some common issues you might run into:
-:
+Common issue which i also face while building the system
+![alt text](image.png)
+Like that error occur
 
 - **Segmentation Fault (macOS)** On certain macOS hardware, you may encounter memory errors when initializing PyTorch/BERT/FAISS. The system has a built-in fallback to bypass the semantic search and run only the keyword-based ranking (BM25/LTR) if a crash is detected.
 - **Missing Index Files**: If you see a `FileNotFoundError`, simply run the index-building command (`python -m src.hybrid_search build`) again to regenerate the index files.

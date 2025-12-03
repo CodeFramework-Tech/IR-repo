@@ -16,7 +16,7 @@ def load_bm25(path):
         bm25_data = pickle.load(f) 
     return BM25Okapi(bm25_data)  
 
-# Load indexes
+
 boolean_index = load_boolean("index/boolean.pkl")
 positional_index = load_positional("index/positional.pkl")
 tfidf_data = load_tfidf("index/tfidf.pkl")
