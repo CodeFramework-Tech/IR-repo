@@ -1,76 +1,103 @@
-# IR-Repo
+# 📰 IR-Repo: Hybrid Information Retrieval System
 
-## Introduction
+## Overview
 
-This project implements an information retrieval (IR) system with a hybrid search mechanism. It allows for the generation of embeddings, indexing, and querying of data using a state-of-the-art IR framework. The system supports the evaluation of search performance and testing of hybrid search results.
+Welcome to the **Hybrid Information Retrieval (IR)** system! This project explores the benefits of hybrid search, combining traditional, high-precision keyword matching with modern, high-recall semantic search to deliver highly relevant and well-ranked results.
 
-## Features
+The system leverages cutting-edge technologies like BM25, TF-IDF, **Learning-to-Rank (LTR)** models, BERT embeddings, and FAISS indexing to ensure fast and accurate search results.
 
-- Hybrid search mechanism.
-- Index creation and embedding generation.
-- Search engine evaluation tools.
-- Testable system for search and ranking.
+## Key Features
 
-## Requirements
+- **Hybrid Ranking**: Combines both sparse (BM25, TF-IDF) and dense (BERT/FAISS) retrieval signals, with final results optimized using a **Learning-to-Rank (LTR)** model.
 
-- Python 3.x
-- pip (for installing dependencies)
-- Virtual Environment (optional but recommended)
-- Any additional software or libraries required for indexing or embeddings.
+- **Embedding Generation & Indexing**: The `src/embeddings.py` script generates BERT embeddings for your documents, which are then indexed using the FAISS library to allow efficient similarity-based search.
 
-## Troubleshooting
+- **Comprehensive Evaluation**: Automatically evaluates the system’s performance through metrics such as
+  **Precision**, **Recall**, and other advanced measures (like **MAP/NDCG**) using the script `src/evaluation.py`.
 
-1. - Make sure you are using Python 3.x. Check the version by running `python --version`.
+- **Modular Design**: The project is divided into easy-to-manage components for preprocessing, indexing, querying, ranking, and evaluation.
 
-2. - Ensure that you have activated the virtual environment before running `pip install -r requirements.txt`.
+## Prerequisites
 
-3. - Check if the index was built correctly. Rebuild the index using `python -m src.build_indexes`.
+- Python 3.10+ (or higher)
+- All required dependencies are listed in `requirements.txt`, which includes libraries like PyTorch, Hugging Face Transformers, FAISS, and others.
 
-## Example Usage
+## Setup & Installation
 
-To run a search query:
+To get started with the project, we recommend setting up a virtual environment. Here’s how to get it running:
 
-```bash
-python -m src.hybrid_search "Example query"
-```
+### 1. Clone the Repository:
 
-Set up virtual environment:
+First, clone the repo to your local machine:
 
 ```bash
-python3 -m venv .venv311
-source .venv311/bin/activate
-```
-
-Install dependencies:
-
-```bash
-pip install -r requirements.txt
 git clone https://github.com/CodeFramework-Tech/IR-repo.git
 cd IR-repo
-python3 -m venv .venv311
-source .venv311/bin/activate
+```
+
+### 2. Create a Virtual Environment:
+
+Set up a Python virtual environment to manage dependencies:
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+```
+
+For **Windows** users, use the following command instead:
+
+```bash
+.\.venv\Scripts\activate
+```
+
+### 3. Install Dependencies:
+
+Install all the necessary libraries using the `requirements.txt` file:
+
+```bash
 pip install -r requirements.txt
 ```
 
-Running the Project:
+## Usage
+
+Once everything is set up, here’s how you can use the system:
+
+### 1. Build & Index Documents
+
+Before you can search, you’ll need to build the index first. This step will create all the required files for the system.
 
 ```bash
-cd src
-python -m src.build_indexes
-python src/embeddings.py
-python -m src.hybrid_search "your query here"
-python -m src.evaluation
-python -m src.test_hybrid
-python -m src.hybrid_search "your query here"
+python -m src.hybrid_search build
 ```
 
-Important info:
-This project has been tested on macOS. Ensure you are using the correct Python version (3.x) and that dependencies like BERT and FAISS are installed correctly. Otherwise, you may encounter errors and the search engine might not function properly.
+### 2. Run a Search Query
 
-## Environment Setup
+Now you can execute a search query. The system will load the pre-built index, perform hybrid scoring (combining BM25, TF-IDF, and BERT), and return the ranked results.
 
 ```bash
-python3 -m venv .venv311
-source .venv311/bin/activate
-pip install -r requirements.txt
+python -m src.hybrid_search "What is the role of BERT in hybrid information retrieval systems?"
 ```
+
+### 3. Evaluate Performance
+
+To evaluate how well your system is performing, you have two options:
+
+- **Single-Query Test**: Quickly test with a single query to calculate Precision and Recall.
+
+  ```bash
+  python evaluate_precision_recall.py
+  ```
+
+- **Batch Evaluation**: Run a more comprehensive evaluation that generates aggregated metrics such as **Mean Average Precision (MAP)** across multiple test queries.
+
+  ```bash
+  python -m src.evaluation
+  ```
+
+## Known Issues & Troubleshooting
+
+Here are some common issues you might run into:
+:
+
+- **Segmentation Fault (macOS)** On certain macOS hardware, you may encounter memory errors when initializing PyTorch/BERT/FAISS. The system has a built-in fallback to bypass the semantic search and run only the keyword-based ranking (BM25/LTR) if a crash is detected.
+- **Missing Index Files**: If you see a `FileNotFoundError`, simply run the index-building command (`python -m src.hybrid_search build`) again to regenerate the index files.

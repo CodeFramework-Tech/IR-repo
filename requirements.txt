@@ -1,8 +1,7 @@
-numpy
+numpy>=1.24.0
 pandas
 scikit-learn
-nltk
-rank_bm25
+torch
+transformers
 faiss-cpu
-joblib
 tqdm
