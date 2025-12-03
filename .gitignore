@@ -11,10 +11,10 @@ Thumbs.db
 *.log
 pip-log.txt
 nltk_data
-requirements.txt
-README.md
+
+
 data/
-src/
+  
 *.log
 pip-log.txt
 nltk_data
