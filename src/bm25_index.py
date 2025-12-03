@@ -1,5 +1,4 @@
-# src/bm25_index.py
-# BM25 index builder
+
 import joblib
 from rank_bm25 import BM25Okapi
 from src.preprocess import preprocess_text  
