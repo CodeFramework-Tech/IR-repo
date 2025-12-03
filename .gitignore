@@ -1,24 +1,17 @@
-# Byte-compiled / cache
 __pycache__/
 *.py[cod]
 *$py.class
-
-# Virtual environments
 .venv/
 venv
 .venv311/
-
-# Local data / artifacts
 index/
 *.pkl
-
-# OS metadata
 .DS_Store
 Thumbs.db
-
-# Logs / misc
 *.log
 pip-log.txt
-# nltk_data/omw-1.4
-# nltk_data/*
 nltk_data
+requirements.txt
+README.md
+data/
+src/
