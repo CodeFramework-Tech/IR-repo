@@ -20,12 +20,11 @@ This project implements an information retrieval (IR) system with a hybrid searc
 
 ## Troubleshooting
 
-1. **Issue: Python version not found**
-   - Make sure you are using Python 3.x. Check the version by running `python --version`.
-2. **Issue: Dependencies not installing**
-   - Ensure that you have activated the virtual environment before running `pip install -r requirements.txt`.
-3. **Issue: Errors while running hybrid search**
-   - Check if the index was built correctly. Rebuild the index using `python -m src.build_indexes`.
+1. - Make sure you are using Python 3.x. Check the version by running `python --version`.
+
+2. - Ensure that you have activated the virtual environment before running `pip install -r requirements.txt`.
+
+3. - Check if the index was built correctly. Rebuild the index using `python -m src.build_indexes`.
 
 ## Example Usage
 
@@ -36,17 +35,26 @@ python -m src.hybrid_search "Example query"
 ```
 
 Set up virtual environment:
+
+```bash
 python3 -m venv .venv311
 source .venv311/bin/activate
+```
+
 Install dependencies:
 
+```bash
 pip install -r requirements.txt
 git clone https://github.com/CodeFramework-Tech/IR-repo.git
 cd IR-repo
 python3 -m venv .venv311
 source .venv311/bin/activate
 pip install -r requirements.txt
-Running the Project
+```
+
+Running the Project:
+
+```bash
 cd src
 python -m src.build_indexes
 python src/embeddings.py
@@ -54,9 +62,15 @@ python -m src.hybrid_search "your query here"
 python -m src.evaluation
 python -m src.test_hybrid
 python -m src.hybrid_search "your query here"
-important info
+```
+
+Important info:
 This project has been tested on macOS. Ensure you are using the correct Python version (3.x) and that dependencies like BERT and FAISS are installed correctly. Otherwise, you may encounter errors and the search engine might not function properly.
-Environment Setup
+
+## Environment Setup
+
+```bash
 python3 -m venv .venv311
 source .venv311/bin/activate
 pip install -r requirements.txt
+```
