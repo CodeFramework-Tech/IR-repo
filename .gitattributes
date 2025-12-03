@@ -1,2 +1,2 @@
-# Auto detect text files and perform LF normalization
 * text=auto
+src/.venv311/lib/python3.10/site-packages/torch/lib/libtorch_cpu.dylib filter=lfs diff=lfs merge=lfs -text
