@@ -1,6 +1,4 @@
-# src/boolean_index.py
-# Simple boolean inverted index: term -> set(docIDs)
-# Student-style and straightforward.
+
 import sys
 import os
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), 'src')))
@@ -9,10 +7,6 @@ import joblib
 from src.preprocess import preprocess_text
 
 def build_boolean_index(docs):
-    """
-    docs: list of strings
-    returns: dict term -> set(doc_ids)
-    """
     index = {}
     for doc_id, text in enumerate(docs):
         toks = preprocess_text(text)
@@ -50,10 +44,6 @@ def retrieve_and(query_tokens, index):
     postings = [index.get(t, set()) for t in query_tokens]
     return boolean_and(postings)
 def boolean_retrieve(query_tokens, index):
-    """
-    Simple AND boolean retrieval.
-    Returns a set of doc_ids that contain ALL query tokens.
-    """
     posting_lists = []
     for token in query_tokens:
         if token in index:

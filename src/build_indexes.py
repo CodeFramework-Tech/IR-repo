@@ -5,34 +5,31 @@ from src.positional_index import build_positional_index, save_index as save_pos
 from src.tfidf_index import build_tfidf_matrix, save_tfidf
 from src.bm25_index import build_bm25, save_bm25
 
-# Load dataset
 df = pd.read_csv("data/news.csv")
 docs = df["Article"].astype(str).tolist()
 
-# Limit to first 50 documents for testing
 docs = docs[:100]
 
-# Save metadata to JSON (using document titles or headings as metadata)
-metadata = {"documents": df["Heading"].astype(str).tolist()}  # Adjust the column name as needed
+metadata = {"documents": df["Heading"].astype(str).tolist()}  
 with open("index/metadata.json", "w") as f:
     json.dump(metadata, f)
 
-# Boolean
+
 print("Building Boolean index...")
 boolean_idx = build_boolean_index(docs)
 save_index(boolean_idx, "index/boolean.pkl")
 
-# Positional
+
 print("Building Positional index...")
 pos_idx = build_positional_index(docs)
 save_pos(pos_idx, "index/positional.pkl")
 
-# TF-IDF
+
 print("Building TF-IDF index...")
 vec, mat = build_tfidf_matrix(docs)
 save_tfidf(vec, mat, "index/tfidf.pkl")
 
-# BM25
+
 print("Building BM25 index...")
 bm25, tokens = build_bm25(docs)
 save_bm25(bm25, tokens, "index/bm25.pkl")
