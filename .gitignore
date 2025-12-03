@@ -15,3 +15,8 @@ requirements.txt
 README.md
 data/
 src/
+*.log
+pip-log.txt
+nltk_data
+src/.venv311/
+libtorch_cpu.dylib
