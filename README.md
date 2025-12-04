@@ -2,7 +2,7 @@
 
 ## Overview
 
-Here is the **Hybrid Information Retrieval (IR)** system! This project explores the benefits of hybrid search, combining traditional, high-precision keyword matching with modern, high-recall semantic search to deliver highly relevant and well-ranked results.
+Here is the **Hybrid Information Retrieval (IR)** system: This project explores the benefits of hybrid search, combining traditional, high-precision keyword matching with modern, high-recall semantic search to deliver highly relevant and well-ranked results.
 
 The system utilize cutting-edge technologies like BM25, TF-IDF, **Learning-to-Rank (LTR)** models, BERT embeddings, and FAISS indexing to ensure fast and accurate search results.
 
